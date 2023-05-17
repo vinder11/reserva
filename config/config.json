@@ -3,21 +3,21 @@
     "username": "usuario",
     "password": "1234",
     "database": "reserva",
-    "host": "localhost",
+    "host": "mariadb",
     "dialect": "mysql"
   },
   "test": {
     "username": "usuario",
     "password": "1234",
     "database": "reserva",
-    "host": "localhost",
+    "host": "mariadb",
     "dialect": "mysql"
   },
   "production": {
     "username": "usuario",
     "password": "1234",
     "database": "reserva",
-    "host": "localhost",
+    "host": "mariadb",
     "dialect": "mysql"
   }
 }
