@@ -17,7 +17,13 @@ const obtenerReservas = async (req, res) => {
 
 const obtenerReservaId = async (req, res) => {
   try {
-    const reserva = await Reserva.findByPk(req.params.id);
+    const reserva = await Reserva.findByPk(req.params.id, {
+      include: {
+        model: Factura,
+        as: 'factura',
+        attributes: ['nit', 'razonSocial', 'metodoPago', 'montoPagado'],
+      },
+    });
     if (!reserva) {
       return res.status(404).json({ error: 'Reserva no encontrada' });
     }

@@ -87,7 +87,7 @@ const validarPago = [
       }
       return true;
     }),
-  check('reservaId')
+  check('id')
     .exists()
     .withMessage('El número de reserva debe ser especificado')
     .isNumeric()
