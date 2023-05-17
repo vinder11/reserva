@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  mariadb:
+    image: mariadb:10.4.29
+    restart: always
+    environment:
+      MYSQL_USER: usuario
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: reserva
+      MYSQL_PASSWORD: "1234"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 3306:3306
+    networks:
+      - backend-network
+  node:
+    depends_on:
+      - mariadb
+    build: .
+    command: sh -c "npx sequelize-cli db:migrate && npm start"
+    restart: always
+    ports:
+      - 3000:3000
+    links:
+      - mariadb
+    networks:
+      - backend-network
+
+networks:
+    backend-network:
+        driver: bridge
